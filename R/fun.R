@@ -64,6 +64,7 @@ dsR_Prob(10,{},{})
 
 
 # set of values
+# set of values
 set_of_val <- list(
   ms_col = c("red", "green", "blue", "black", "magenta"),
   ms_con = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
@@ -71,6 +72,9 @@ set_of_val <- list(
   ms_cit = c("Ljubljana","Antananarivo","Taipeh","Tokyo","Canberra","Seattle","Asuncion","Windhoek"),
   mo_siz = c("XS", "S", "M", "L", "XL"),
   mo_gra = c(1,2,3,4,5,6),
+  li_3 = c("Agree", "Neutral", "Disagree"),
+  li_5 = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
+  li_7 = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
   i_1 = 1:1000,
   i_2 = 9000:20120,
   l = c(TRUE,FALSE),
