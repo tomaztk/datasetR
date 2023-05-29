@@ -59,12 +59,12 @@ dsR_Prob <- function(rw, sps=NULL, prob=NULL){
 dsR_Prob(10,{},{})
 
 
+##################
+##################
+## set of values
+##################
+##################
 
-#sample data
-
-
-# set of values
-# set of values
 set_of_val <- list(
   ms_col = c("red", "green", "blue", "black", "magenta"),
   ms_con = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
@@ -96,8 +96,8 @@ tt <- function(vr="ms:3;b:4;i:1", nr=100){
 
       n <- names(set_of_val) %like% "ms"
       print(n)
-      #sample(set_of_val$i_1, nr, TRUE)
-      #sample(set_of_val$b_1, nr, TRUE)
+      #get through creating a data
+
       dd <- sample(ty, nr, replace=TRUE)
       df <- cbind(df, dd)
 
