@@ -65,6 +65,7 @@ dsR_Prob(10,{},{})
 ##################
 ##################
 
+
 set_of_val <- list(
   ms_col = c("red", "green", "blue", "black", "magenta"),
   ms_con = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
@@ -79,9 +80,21 @@ set_of_val <- list(
   i_2 = 9000:20120,
   l = c(TRUE,FALSE),
   b_1 = c("Yes", "No"),
-  b_2 = c("1", "0")
+  b_2 = c("1", "0"),
+  le_big = LETTERS,
+  le_small = letters,
+  gu_ = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
+  te_C = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
+  te_F = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
+  mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
+
 )
 
+
+getwd()
+
+
+format(object.size(set_of_val), units="Mb", digits=3L)
 
 tt <- function(vr="ms:3;b:4;i:1", nr=100){
   df <- NULL
@@ -113,6 +126,10 @@ tt <- function(vr="ms:3;b:4;i:1", nr=100){
 
 tt(nr=10)
 
+
+
+#
+#
 # k <- 10
 # m <- 10
 #
