@@ -18,47 +18,6 @@
 
 
 
-
-# general dsR
-dsR <- function(cl,rw, rnd=FALSE, sps=NULL){
-
-  if (rnd==TRUE){
-    df <- as.data.frame(matrix(1:cl*rw, nrow = rw, ncol = cl, byrow = TRUE))
-    print(df)
-  } else {
-    print(sps)
-    x <- list(
-      a = 1:10,
-      beta = exp(-3:3),
-      logic = c(TRUE,FALSE,FALSE,TRUE)
-    )
-
-  }
-}
-
-#test
-myda <- dsR(10,10, TRUE)
-dsR(10,10, FALSE)
-
-
-
-# general dsR with prob
-dsR_Prob <- function(rw, sps=NULL, prob=NULL){
-
-  print(sps)
-  xx <- lapply(x, quantile, probs = 1:3/4)
-  x <- list(
-    a = 1:10,
-    beta = exp(-3:3),
-    logic = c(TRUE,FALSE,FALSE,TRUE)
-  )
-
-}
-
-#test
-dsR_Prob(10,{},{})
-
-
 ##################
 ##################
 ## set of values
@@ -87,61 +46,43 @@ set_of_val <- list(
   te_C = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
   te_F = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
   mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
-
 )
 
-
-getwd()
-
-
+# size
 format(object.size(set_of_val), units="Mb", digits=3L)
 
-tt <- function(vr="ms:3;b:4;i:1", nr=100){
+
+##################
+##################
+## create sample
+## data.frame
+##################
+##################
+
+
+dsR <- function(vr="ms:3;b:4;i:1", nr=100){
   df <- NULL
+  nam <- names(set_of_val)
   for (i in 1:length(unlist(strsplit(vr,";")))){
     a<-strsplit(unlist(strsplit(vr,";")),":")[i]
     ty <- unlist(a)[1]
     ty_l <- unlist(a)[2]
-    print(ty)
-    #print(ty_l)
     for (j in 1:ty_l){
-      print(j)
-
-      n <- names(set_of_val) %like% "ms"
-      print(n)
-      #get through creating a data
-
-      dd <- sample(ty, nr, replace=TRUE)
-      df <- cbind(df, dd)
-
+      var_enum <- sample(grep(ty, nam),1, replace=TRUE)
+      df_pool <- as.data.frame(unlist(t(set_of_val[var_enum])))
+      names(df_pool) <- "v"
+      df_tmp <- as.data.frame(sample(df_pool$v, nr, replace=TRUE))
+      names(df_tmp) <- ty
+      df <- c(df, df_tmp)
 
     }
-    #return(df)
   }
+  df <- as.data.frame(do.call(cbind, df))
+  return(df)
 }
 
-# sample(set_of_val$i_1, 10, TRUE)
-# sample(set_of_val$i_1, 10, TRUE)
-# sample(set_of_val$b_1, 100, TRUE)
-
-tt(nr=10)
+#create sample data
+sample_data <- dsR(vr="ms:2;i:2;le:3;li:2", nr=10000)
 
 
 
-#
-#
-# k <- 10
-# m <- 10
-#
-# f <- function(k, m){
-#   st <- NULL
-#   st <- lapply(1:10, k, function(x){
-#     for (i in 1:x){
-#       r <- i*10*m
-#       st <- c(st, r)
-#     }
-#   })
-# }
-#
-#
-# f(10,10)
