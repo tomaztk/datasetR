@@ -84,5 +84,5 @@ dsR <- function(vr="ms:3;b:4;i:1", nr=100){
 #create sample data
 sample_data <- dsR(vr="ms:2;i:2;le:3;li:2", nr=10000)
 
-
+sample_data
 
