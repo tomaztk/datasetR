@@ -26,25 +26,25 @@
 
 
 set_of_val <- list(
-  ms_col = c("red", "green", "blue", "black", "magenta"),
-  ms_con = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
-  ms_ZIP = c(20123,3502,102023, 1000, 54903),
-  ms_cit = c("Ljubljana","Antananarivo","Taipeh","Tokyo","Canberra","Seattle","Asuncion","Windhoek"),
-  mo_siz = c("XS", "S", "M", "L", "XL"),
-  mo_gra = c(1,2,3,4,5,6),
-  li_3 = c("Agree", "Neutral", "Disagree"),
-  li_5 = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
-  li_7 = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
-  i_1 = 1:1000,
-  i_2 = 9000:20120,
+  ms = c("red", "green", "blue", "black", "magenta"),
+  ms = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
+  ms = c(20123,3502,102023, 1000, 54903),
+  ms = c("Ljubljana","Antananarivo","Taipeh","Tokyo","Canberra","Seattle","Asuncion","Windhoek"),
+  mo = c("XS", "S", "M", "L", "XL"),
+  mo = c(1,2,3,4,5,6),
+  li = c("Agree", "Neutral", "Disagree"),
+  li = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
+  li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
+  i = 1:1000,
+  i = 9000:20120,
   l = c(TRUE,FALSE),
-  b_1 = c("Yes", "No"),
-  b_2 = c("1", "0"),
-  le_big = LETTERS,
-  le_small = letters,
-  gu_ = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
-  te_C = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
-  te_F = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
+  b = c("Yes", "No"),
+  b = c("1", "0"),
+  le = LETTERS,
+  le = letters,
+  gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
+  te = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
+  te = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
   mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
 )
 
@@ -60,14 +60,17 @@ format(object.size(set_of_val), units="Mb", digits=3L)
 ##################
 
 
-dsR <- function(vr="ms:3;b:4;i:1", nr=100){
+dsR <- function(vr="ms:3;b:4;i:1", nr=10){
   df <- NULL
   nam <- names(set_of_val)
   for (i in 1:length(unlist(strsplit(vr,";")))){
     a<-strsplit(unlist(strsplit(vr,";")),":")[i]
     ty <- unlist(a)[1]
     ty_l <- unlist(a)[2]
+    print(ty)
+    print(ty_l)
     for (j in 1:ty_l){
+      print(j)
       var_enum <- sample(grep(ty, nam),1, replace=TRUE)
       df_pool <- as.data.frame(unlist(t(set_of_val[var_enum])))
       names(df_pool) <- "v"
