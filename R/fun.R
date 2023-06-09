@@ -35,11 +35,11 @@ set_of_val <- list(
   li = c("Agree", "Neutral", "Disagree"),
   li = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
   li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
-  i = 1:1000,
-  i = 9000:20120,
-  l = c(TRUE,FALSE),
-  b = c("Yes", "No"),
-  b = c("1", "0"),
+  ii = 1:1000,
+  ii = 9000:20120,
+  bo = c(TRUE,FALSE),
+  bi = c("Yes", "No"),
+  bi = c("1", "0"),
   le = LETTERS,
   le = letters,
   gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
@@ -60,7 +60,7 @@ format(object.size(set_of_val), units="Mb", digits=3L)
 ##################
 
 
-dsR <- function(vr="ms:3;b:4;i:1", nr=10){
+dsR <- function(vr="ms:3;bi:4;ii:1", nr=10){
   df <- NULL
   nam <- names(set_of_val)
   for (i in 1:length(unlist(strsplit(vr,";")))){
@@ -85,7 +85,12 @@ dsR <- function(vr="ms:3;b:4;i:1", nr=10){
 }
 
 #create sample data
-sample_data <- dsR(vr="ms:2;i:2;le:3;li:2", nr=10000)
+sample_data <- dsR(vr="ms:2;ii:2;le:3;li:2", nr=1000)
+sample_data2 <-dsR(vr="ii:5;gu:3", nr=1000)
+sample_data2 <-dsR(vr="ii:5;le:5", nr=1000)
 
-sample_data
 
+###ToDO:
+## - correct data types from dsR function
+## - test if guid works (???)
+## - microbench
