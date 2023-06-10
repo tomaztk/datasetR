@@ -24,14 +24,14 @@
 ##################
 ##################
 
-
+#ms = nominal ; mo = ordinal; li = likert; bo = boolean; bi = binary; le = letters; gu = GUID; te = temperature; mo = money
 set_of_val <- list(
   ms = c("red", "green", "blue", "black", "magenta"),
   ms = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
   ms = c(20123,3502,102023, 1000, 54903),
   ms = c("Ljubljana","Antananarivo","Taipeh","Tokyo","Canberra","Seattle","Asuncion","Windhoek"),
-  mo = c("XS", "S", "M", "L", "XL"),
-  mo = c(1,2,3,4,5,6),
+  od = c("XS", "S", "M", "L", "XL"),
+  od = c(1,2,3,4,5,6),
   li = c("Agree", "Neutral", "Disagree"),
   li = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
   li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
@@ -90,7 +90,13 @@ sample_data2 <-dsR(vr="ii:5;gu:3", nr=1000)
 sample_data2 <-dsR(vr="ii:5;le:5", nr=1000)
 
 
+sample_data3 <-dsR(vr="mo:4", nr=100000)
+
+summary(sample_data3)
+
+
 ###ToDO:
 ## - correct data types from dsR function
+## - variable selection!
 ## - test if guid works (???)
 ## - microbench
