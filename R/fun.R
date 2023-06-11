@@ -67,19 +67,15 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=10){
     a<-strsplit(unlist(strsplit(vr,";")),":")[i]
     ty <- unlist(a)[1]
     ty_l <- unlist(a)[2]
-    print(ty)
-    print(ty_l)
     for (j in 1:ty_l){
-      #print(j)
       sub_name <- grep(ty, nam)
       resample <- function(x, ...) x[sample.int(length(x), ...)]
-      var_enum <- sample(grep(ty, nam),1, replace=TRUE)
+      var_enum <- resample(grep(ty, nam),1, replace=TRUE)
       df_pool <- as.data.frame(unlist(t(set_of_val[var_enum])))
       names(df_pool) <- "v"
       df_tmp <- as.data.frame(sample(df_pool$v, nr, replace=TRUE))
       names(df_tmp) <- ty
       df <- c(df, df_tmp)
-
     }
   }
   df <- as.data.frame(do.call(cbind, df))
@@ -90,17 +86,14 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=10){
 sample_data <- dsR(vr="ms:2;ii:2;le:3;li:2", nr=1000)
 sample_data2 <-dsR(vr="ii:5;gu:3", nr=1000)
 sample_data2 <-dsR(vr="ii:5;le:5", nr=1000)
-
-
 sample_data3 <-dsR(vr="mo:4", nr=100000)
 
-summary(sample_data3)
 
 
 ###ToDO:
 ## - correct data types from dsR function
 ## - variable selection! - OK!
-## - test if guid works (???)
+## - test if guid works (???) - OK!
 ## - microbench
 
 
