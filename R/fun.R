@@ -70,7 +70,9 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=10){
     print(ty)
     print(ty_l)
     for (j in 1:ty_l){
-      print(j)
+      #print(j)
+      sub_name <- grep(ty, nam)
+      resample <- function(x, ...) x[sample.int(length(x), ...)]
       var_enum <- sample(grep(ty, nam),1, replace=TRUE)
       df_pool <- as.data.frame(unlist(t(set_of_val[var_enum])))
       names(df_pool) <- "v"
@@ -97,6 +99,57 @@ summary(sample_data3)
 
 ###ToDO:
 ## - correct data types from dsR function
-## - variable selection!
+## - variable selection! - OK!
 ## - test if guid works (???)
 ## - microbench
+
+
+
+
+
+### with distrubtions
+dsR <- function(cl,rw, rnd=FALSE, sps=NULL){
+
+  if (rnd==TRUE){
+    df <- as.data.frame(matrix(1:cl*rw, nrow = rw, ncol = cl, byrow = TRUE))
+    print(df)
+  } else {
+    print(sps)
+    x <- list(
+      a = 1:10,
+      beta = exp(-3:3),
+      logic = c(TRUE,FALSE,FALSE,TRUE)
+    )
+
+  }
+}
+
+
+
+#test
+myda <- dsR(10,10, TRUE)
+dsR(10,10, FALSE)
+sample(set_of_val$i_1, 10, TRUE)
+
+
+# general dsR
+dsR <- function(cl,rw, rnd=FALSE, sps=NULL){
+
+  if (rnd==TRUE){
+    df <- as.data.frame(matrix(1:cl*rw, nrow = rw, ncol = cl, byrow = TRUE))
+    print(df)
+  } else {
+    print(sps)
+    x <- list(
+      a = 1:10,
+      beta = exp(-3:3),
+      logic = c(TRUE,FALSE,FALSE,TRUE)
+    )
+
+  }
+}
+
+#test
+myda <- dsR(10,10, TRUE)
+dsR(10,10, FALSE)
+
