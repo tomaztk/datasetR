@@ -48,19 +48,16 @@ set_of_val <- list(
   mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
 )
 
-# size
+# object size
 format(object.size(set_of_val), units="Mb", digits=3L)
 
 
-##################
-##################
-## create sample
-## data.frame
-##################
-##################
+####################################
+## create sample  data.frame
+####################################
 
 
-dsR <- function(vr="ms:3;bi:4;ii:1", nr=10){
+dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
   df <- NULL
   nam <- names(set_of_val)
   for (i in 1:length(unlist(strsplit(vr,";")))){
@@ -82,11 +79,12 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=10){
   return(df)
 }
 
-#create sample data
-sample_data <- dsR(vr="ms:2;ii:2;le:3;li:2", nr=1000)
-sample_data2 <-dsR(vr="ii:5;gu:3", nr=1000)
-sample_data2 <-dsR(vr="ii:5;le:5", nr=1000)
-sample_data3 <-dsR(vr="mo:4", nr=100000)
+
+#create test sample data
+sample_data <- dsR(vr="ms:2;ii:2;le:3;li:2", nr=10)
+sample_data2 <-dsR(vr="ii:5;gu:3", nr=10)
+sample_data2 <-dsR(vr="ii:5;le:5", nr=10)
+sample_data3 <-dsR(vr="mo:4", nr=990)
 
 
 
@@ -97,7 +95,14 @@ sample_data3 <-dsR(vr="mo:4", nr=100000)
 ## - microbench
 
 
-
+#Data types
+nam_val<- as.data.frame(substr(capture.output(str(set_of_val)),1,10))
+nam_val <- as.data.frame(nam_val[2:dim(nam_val)[1],])
+names(nam_val) <- "ty"
+nam_val<-as.data.frame(do.call(rbind, strsplit(as.character(nam_val$ty), split = ':', fixed = FALSE)))
+names(nam_val) <- c("var","typ")
+nam_val$var <- substr(nam_val$var,4,5)
+nam_val$typ <- trimws(nam_val$typ)
 
 
 ### with distrubtions
