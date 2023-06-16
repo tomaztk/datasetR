@@ -86,6 +86,7 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
       var_enum <- resample(grep(ty, nam),1, replace=TRUE)
       var_type <- getType(var_enum)
       df_pool <- as.data.frame(unlist(t(set_of_val[var_enum])))
+      class(df_pool) <- var_type
       names(df_pool) <- "v"
       df_tmp <- as.data.frame(sample(df_pool$v, nr, replace=TRUE))
       names(df_tmp) <- ty
