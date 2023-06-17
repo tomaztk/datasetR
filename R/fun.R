@@ -85,15 +85,23 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
       resample <- function(x, ...) x[sample.int(length(x), ...)]
       var_enum <- resample(grep(ty, nam),1, replace=TRUE)
       var_type <- getType(var_enum)
-      df_pool <- as.data.frame(unlist(t(set_of_val[var_enum])))
-      class(df_pool) <- var_type
+      df_pool <- as.data.frame((unlist(t(set_of_val[var_enum]))))
+      if (var_type == "chr") df_pool <- as.data.frame(as.character(unlist(t(set_of_val[var_enum]))))
+      if (var_type == "int") df_pool <- as.data.frame(as.integer(unlist(t(set_of_val[var_enum]))))
+      if (var_type == "num") df_pool <- as.data.frame(as.numeric(unlist(t(set_of_val[var_enum]))))
       names(df_pool) <- "v"
-      df_tmp <- as.data.frame(sample(df_pool$v, nr, replace=TRUE))
-      names(df_tmp) <- ty
-      df <- c(df, df_tmp)
+      df_tmp <- NULL
+      df_tmp <- data.frame(sample(df_pool$v, nr, replace=TRUE))
+      varn <- paste0("ty_", i)
+      names(df_tmp) <- varn
+      if (is.null(dim(df))) {
+        df <- cbind(df_tmp)
+      }else{
+        df <- cbind(df,df_tmp)
+      }
+
     }
   }
-  df <- as.data.frame(do.call(cbind, df))
   return(df)
 }
 
