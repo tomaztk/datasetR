@@ -114,13 +114,7 @@ sample_data3 <-dsR(vr="mo:4", nr=990)
 
 
 
-###ToDO:
-## - correct data types from dsR function
-## - variable selection! - OK!
-## - test if guid works (???) - OK!
-## - microbench
-
-
+##### work in progress!
 
 
 ### with distrubtions
