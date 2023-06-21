@@ -77,6 +77,7 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
   df <- NULL
   nam <- names(set_of_val)
   nof_variables <- 0
+  #make df for all variables and enumerate
   for (i in 1:length(unlist(strsplit(vr,";")))){
     nn<-strsplit(unlist(strsplit(vr,";")),":")[i]
     nof_variables <- nof_variables + as.numeric(unlist(nn)[2])
