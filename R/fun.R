@@ -74,17 +74,24 @@ getType <- function(var_enum_enter=1) {
 
 
 dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
+  library(dplyr)
   df <- NULL
+  dff <- NULL
   nam <- names(set_of_val)
   nof_variables <- 0
   #make df for all variables and enumerate
   for (i in 1:length(unlist(strsplit(vr,";")))){
     nn<-strsplit(unlist(strsplit(vr,";")),":")[i]
-    ty <- unlist(a)[1]
-    ty_l <- unlist(a)[2]
-    df <- rbind(df, data.frame(v=ty, l=ty_l))
+    ty <- unlist(nn)[1]
+    ty_l <- unlist(nn)[2]
+    dff <- rbind(dff, data.frame(v=ty, l=ty_l))
     nof_variables <- nof_variables + as.numeric(unlist(nn)[2])
   }
+
+  df2 <- dff %>%
+    group_by(v) %>%
+    mutate(cn = paste0(v ,"_" , 1:n(), sep=""))
+
   for (i in 1:length(unlist(strsplit(vr,";")))){
     a<-strsplit(unlist(strsplit(vr,";")),":")[i]
     ty <- unlist(a)[1]
