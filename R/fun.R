@@ -76,46 +76,42 @@ getType <- function(var_enum_enter=1) {
 dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
   library(dplyr)
   df <- NULL
+  df_i <- NULL
   dff <- NULL
   nam <- names(set_of_val)
-  nof_variables <- 0
-  #make df for all variables and enumerate
-  for (i in 1:length(unlist(strsplit(vr,";")))){
+
+    for (i in 1:length(unlist(strsplit(vr,";")))){
     nn<-strsplit(unlist(strsplit(vr,";")),":")[i]
     ty <- unlist(nn)[1]
     ty_l <- unlist(nn)[2]
-    dff <- rbind(dff, data.frame(v=ty, l=ty_l))
-    nof_variables <- nof_variables + as.numeric(unlist(nn)[2])
+    df_i <- rbind(df_i, data.frame(v=ty, l=ty_l))
   }
 
-  df2 <- dff %>%
+  dff <- df_i[rep(seq(nrow(df_i)), df_i$l),]
+  dff2 <- dff %>%
     group_by(v) %>%
     mutate(cn = paste0(v ,"_" , 1:n(), sep=""))
 
-  for (i in 1:length(unlist(strsplit(vr,";")))){
-    a<-strsplit(unlist(strsplit(vr,";")),":")[i]
-    ty <- unlist(a)[1]
-    ty_l <- unlist(a)[2]
-    for (j in 1:ty_l){
-      sub_name <- grep(ty, nam)
-      resample <- function(x, ...) x[sample.int(length(x), ...)]
-      var_enum <- resample(grep(ty, nam),1, replace=TRUE)
-      var_type <- getType(var_enum)
-      df_pool <- as.data.frame((unlist(t(set_of_val[var_enum]))))
-      if (var_type == "chr") df_pool <- as.data.frame(as.character(unlist(t(set_of_val[var_enum]))))
-      if (var_type == "int") df_pool <- as.data.frame(as.integer(unlist(t(set_of_val[var_enum]))))
-      if (var_type == "num") df_pool <- as.data.frame(as.numeric(unlist(t(set_of_val[var_enum]))))
-      names(df_pool) <- "v"
-      df_tmp <- NULL
-      df_tmp <- data.frame(sample(df_pool$v, nr, replace=TRUE))
-      varn <- paste0("ty_", i)
-      names(df_tmp) <- varn
-      if (is.null(dim(df))) {
-        df <- cbind(df_tmp)
-      }else{
-        df <- cbind(df,df_tmp)
-      }
-
+  for (i in 1:nrow(dff2)){
+    ty <- dff2$v[i]
+    ty_l <- dff2$l[i]
+    ty_n <- dff2$cn[i]
+    sub_name <- grep(ty, nam)
+    resample <- function(x, ...) x[sample.int(length(x), ...)]
+    var_enum <- resample(grep(ty, nam),1, replace=TRUE)
+    var_type <- getType(var_enum)
+    df_pool <- as.data.frame((unlist(t(set_of_val[var_enum]))))
+    if (var_type == "chr") df_pool <- as.data.frame(as.character(unlist(t(set_of_val[var_enum]))))
+    if (var_type == "int") df_pool <- as.data.frame(as.integer(unlist(t(set_of_val[var_enum]))))
+    if (var_type == "num") df_pool <- as.data.frame(as.numeric(unlist(t(set_of_val[var_enum]))))
+    names(df_pool) <- "v"
+    df_tmp <- NULL
+    df_tmp <- data.frame(sample(df_pool$v, nr, replace=TRUE))
+    names(df_tmp) <- ty_n
+    if (is.null(dim(df))) {
+      df <- cbind(df_tmp)
+    }else{
+      df <- cbind(df,df_tmp)
     }
   }
   return(df)
@@ -123,10 +119,10 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
 
 
 #create test sample data
-sample_data <- dsR(vr="ms:2;ii:2;le:3;li:2", nr=10)
-sample_data2 <-dsR(vr="ii:5;gu:3", nr=10)
-sample_data2 <-dsR(vr="ii:5;le:5", nr=10)
-sample_data3 <-dsR(vr="mo:4", nr=990)
+sample_data1 <- dsR(vr="ms:2;ii:2;le:3;li:2", nr=10)
+sample_data2 <-dsR(vr="ii:5;gu:3", nr=500)
+sample_data3 <-dsR(vr="ii:5;le:5", nr=10)
+sample_data4 <-dsR(vr="mo:4", nr=990)
 
 
 
