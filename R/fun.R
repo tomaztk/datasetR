@@ -1,19 +1,13 @@
 # datasetR
 
-### generate dataframe with dimensions (n*m)
-### generate matrix with dimensions (n*m)
-### generate vectors with dimension (m)
-
-### Generate vectors of variables (1x integer, 1x categorical, 1x ordinal, 1x binary)
-
 ### generate_dataframe with dimensions and
 #   - 10% of null values?
 #   - particular  distribution
 #   - particular correlation between variables (define variable(s))
 #   - with mean, mode, st.dev
 
-### Generate graph based dataset
 
+### Generate graph based dataset
 ## Linear transformation!
 
 
@@ -127,6 +121,15 @@ sample_data4 <-dsR(vr="mo:4", nr=990)
 
 
 ##### work in progress!
+
+
+#   - 10% of NA values?
+### test
+an <- sample(1:10, 50, replace=TRUE)
+proc_na <- 0.1 #10% of null
+an[sample(seq_along(an), proc_na*length(an))] <- NA
+
+summary(an)
 
 
 ### with distrubtions
