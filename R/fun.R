@@ -18,33 +18,36 @@
 ##################
 ##################
 
-#ms = nominal ; mo = ordinal; li = likert; bo = boolean; bi = binary; le = letters; gu = GUID; te = temperature; mo = money
-set_of_val <- list(
-  ms = c("red", "green", "blue", "black", "magenta"),
-  ms = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
-  ms = c(20123,3502,102023, 1000, 54903),
-  ms = c("Ljubljana","Antananarivo","Taipeh","Tokyo","Canberra","Seattle","Asuncion","Windhoek"),
-  od = c("XS", "S", "M", "L", "XL"),
-  od = c(1,2,3,4,5,6),
-  li = c("Agree", "Neutral", "Disagree"),
-  li = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
-  li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
-  ii = 1:1000,
-  ii = 9000:20120,
-  bo = c(TRUE,FALSE),
-  bi = c("Yes", "No"),
-  bi = c("1", "0"),
-  le = LETTERS,
-  le = letters,
-  gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
-  te = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
-  te = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
-  mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
-)
+getValues <- function(){
+    #ms = nominal ; mo = ordinal; li = likert; bo = boolean; bi = binary; le = letters; gu = GUID; te = temperature; mo = money
+    set_of_val <<- list(
+      ms = c("red", "green", "blue", "black", "magenta"),
+      ms = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
+      ms = c(20123,3502,102023, 1000, 54903),
+      ms = c("Ljubljana","Antananarivo","Taipeh","Tokyo","Canberra","Seattle","Asuncion","Windhoek"),
+      od = c("XS", "S", "M", "L", "XL"),
+      od = c(1,2,3,4,5,6),
+      li = c("Agree", "Neutral", "Disagree"),
+      li = c("Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"),
+      li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
+      ii = 1:1000,
+      ii = 9000:20120,
+      bo = c(TRUE,FALSE),
+      bi = c("Yes", "No"),
+      bi = c("1", "0"),
+      le = LETTERS,
+      le = letters,
+      gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
+      te = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
+      te = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
+      mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
+    )
+}
 
 # object size
 format(object.size(set_of_val), units="Mb", digits=3L)
 
+getValues()
 
 ####################################
 ## create sample  data.frame
