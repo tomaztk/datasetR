@@ -1,0 +1,11 @@
+Package: datasetR
+Type: Package
+Title: Functions for creating a random dataframe with desired data types
+Version: 0.1.0
+Author: Tomaz Kastrun
+Maintainer: Tomaz Kastrun <tomaztsql@gmail.coom>
+Description: Package for creating a random datasets for testing and analytical purposes.
+    Function creates a dataframe based on type of columns (nominal, ordinal, interval).
+License: MIT
+Encoding: UTF-8
+LazyData: true
