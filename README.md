@@ -11,7 +11,7 @@ There is an `dsR` function to create a random data frame.
 Various people in the world create a growing number of R packages. A
 part of the cause of it is the **devtools** package that makes it easy
 to develop R packages
-[$$1$$](https://www.rstudio.com/products/rpackages/devtools/). The
+[devtools](https://www.rstudio.com/products/rpackages/devtools/). The
 **devtools** package not only facilitates the process to develop R
 packages but also provides another way to distribute R packages.
 
