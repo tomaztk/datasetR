@@ -9,3 +9,4 @@ Description: Package for creating a random datasets for testing and analytical p
 License: MIT
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.3
