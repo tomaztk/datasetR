@@ -107,7 +107,8 @@ set_of_val <- list(
   bi = c("1", "0"),
   le = LETTERS,
   le = letters,
-  gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
+  #gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}), #works only on linux/mac
+  gu = sapply(seq_len(1000), function(x) {get_uuid()}),
   te = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
   te = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
   mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
