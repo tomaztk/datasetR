@@ -24,6 +24,26 @@ getType <- function(var_enum_enter=1) {
   return(tip)
 }
 
+#' @title Creating GUID for test data
+#'
+#' @description Get guid for creating a sample dataset
+#'
+#' @return The data type guid
+#' @examples
+#' get_uuid();
+#'
+#' @export
+#'
+get_uuid <- function(){
+  s_uuid <- paste0(sample(c(0:9, letters[1:6]),30, replace=T), collapse="")
+  s <- '-'
+  s_ch <- sample(c("8","9","a","b"),1) #v4_control
+
+  ui <- paste0(substr(s_uuid,1,8),s,substr(s_uuid,9,12),s,"4",substr(s_uuid,13,15),s,s_ch,
+               substr(s_uuid,16,18),s,substr(s_uuid,19,30),collapse="")
+  return(ui)
+}
+
 
 #' Get the starting set of values for constructing the dataframe
 #'
@@ -54,7 +74,8 @@ getValues <- function(){
     bi = c("1", "0"),
     le = LETTERS,
     le = letters,
-    gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}),
+    #gu = sapply(seq_len(1000), function(x) {system("uuidgen", intern=T)}), #works only on linux/mac
+    gu = sapply(seq_len(1000), function(x) {get_uuid()}),
     te = sapply(seq_len(1000), function(x) {sample(c(-20:35),1, replace=TRUE)}),
     te = sapply(seq_len(1000), function(x) {sample(c(1:130),1, replace=TRUE)}),
     mo = sapply(seq_len(1000), function(x) {sample(c(10:10000),1, replace=TRUE)})
