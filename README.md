@@ -25,9 +25,30 @@ And you will get a starting set of values:
 ![Set of Values](imgs/img1_set_of_vals.png)
 
 
-### Data Types
+## Data Types
 
+Understand the predefined list of values for constructing the datasets.
 
+**Types** explained:
+
+1. ms: multi-class type of nominal data; all values are equal and no ordering can be done. Available:
+	* 	color
+	*	continents
+	*	imaginary ZIP codes
+	*	capital cities
+2. od: ordinal data; values can be assigned order and comparison can be created. Available:
+	*	clothing size
+	*	classes from 1 to 6
+3. li: likert scale data; questionnaire type of data and values can be sorted. Available:
+	*	three-value scale for expressing opinion
+	*	five-value scale for expressing opinion
+	*	seven-value scale for expressing opinion
+4. bo: 
+5. bi: 
+6. le: 
+7. gu: 
+8. te:  
+9. mo:
 
 ### Generating your random dataset
 
@@ -36,6 +57,8 @@ With the following example, the code will create a dataframe of 100 rows with to
 2. 4 x two-class (nominal with two (binary) class ; characters or numbers)
 3. 1 x interval (integer)
 
+The dimensions of the dataset is 8 variables and 100 rows of sampled data.
+
 ``` r
 library(datasetR)
 library(dplyr)
@@ -43,6 +66,21 @@ library(dplyr)
 my_dataset <- dsR(vr="ms:3;bi:4;ii:1", nr=100);
 ```
 
+### Generating your desired 
+
+When you want to create a desired dataset, use the `vr`parameter and construct the string for the values. 
+The string is annotated as **type** : _number of variables_ . When stating multiple types, make sure to separated them with semi-colon.
+
+```r
+test_data <- dsR(vr="od:1;ms:1;bi:1;ii:1", nr=10);
+```
+
+And following statements will generate the dataset of the same dimension.
+
+```r
+test_data <- dsR(vr="od:1;od:1", nr=10);
+test_data <- dsR(vr="od:2", nr=10);
+```
 
 ## Community and distribution
 
