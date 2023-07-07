@@ -43,12 +43,18 @@ Understand the predefined list of values for constructing the datasets.
 	*	three-value scale for expressing opinion
 	*	five-value scale for expressing opinion
 	*	seven-value scale for expressing opinion
-4. bo: 
-5. bi: 
-6. le: 
-7. gu: 
-8. te:  
-9. mo:
+4. bo: boolean data; with values of TRUE and FALSE
+5. bi: binary data with two outcomes. Available:
+	*	character type of values Yes and No
+	* 	integer type of values 0 and 1
+6. le: single character values of alphabet letters. Available:
+	*	lowercase letters
+	* 	uppercase letters
+7. gu: alpha-numeric character string of 16 bytes length, v4; known as Globally unique identifier (GUID or UUID)
+8. te: numeric data of temperature with no specific unit of measure. Available:
+	*	temperature (pref. °C) with range from -20 to 35
+	* 	temperature (pref. °C) with range from 1 to 130 (integer type)
+9. mo: numeric data of money with no specific unit.
 
 ### Generating your random dataset
 
