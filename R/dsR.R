@@ -169,3 +169,25 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
   }
   return(df)
 }
+
+
+#' Function for replacing values with missing NA value for a given dataframe and variable
+#'
+#' @param df Name of the dataframe
+#' @param var Name of the variable
+#' @param pct Percent of missing values
+#'
+#' @return dataframe
+#' @examples
+#' addMissingValues(df=df, var=var, pc=10);
+#'
+#' @export
+#'
+addMissingValues <- function(df,var,pc=10) {
+  stopifnot(nrow(df)>0)
+  df$var1[df$var1 %in% sample(df$var1, (pc/100)*nrow(df), replace=FALSE)] <<- NA
+}
+
+
+
+
