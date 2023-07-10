@@ -185,6 +185,8 @@ dsR <- function(vr="ms:3;bi:4;ii:1", nr=100){
 #'
 addMissingValues <- function(df,var,pc=10) {
   stopifnot(nrow(df)>0)
+  #ar <- match.call()
+  #print(df[[ar$col_name]])
   df$var1[df$var1 %in% sample(df$var1, (pc/100)*nrow(df), replace=FALSE)] <<- NA
 }
 
