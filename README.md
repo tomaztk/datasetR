@@ -88,6 +88,17 @@ test_data <- dsR(vr="od:1;od:1", nr=10);
 test_data <- dsR(vr="od:2", nr=10);
 ```
 
+
+### Adding missing values to your dataset 
+
+When you want to skew your dataset, you can add some missing values to your desired data. By using `addMissingValues` on a desired dataset and desired column, the values will get replaced by `NA` values.
+In addition, the parameter `pc` is for percent of values for given dataframe.column that you want to replace. 
+
+```r
+my_dataset$ii_1 <- addMissingValues(my_dataset, ii_1, pc = 10)
+
+```
+
 ## Community and distribution
 
 You are welcome to submit suggestions and report bugs: https://github.com/tomaztk/datasetR/issues

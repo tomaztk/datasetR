@@ -188,8 +188,8 @@ addMissingValues <- function(df_name,col_name,pc=10) {
   #ar <- match.call()
   #print(df[[ar$col_name]])
   col_name <- deparse(substitute(col_name))
-  df_name[[col_name]][df_name[[col_name]] %in% sample(df_name[[col_name]], (pc/100)*nrow(df_name), replace=FALSE)] <- NA
-  df_name[[col_name]]
+  df_name[[col_name]][df_name[[col_name]] %in% sample(df_name[[col_name]], (pc/100)*nrow(df_name), replace=FALSE)] <<- NA
+  #df_name[[col_name]]
 }
 
 
