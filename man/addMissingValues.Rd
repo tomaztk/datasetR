@@ -7,9 +7,9 @@
 addMissingValues(df_name, col_name, pc = 10)
 }
 \arguments{
-\item{col_name}{Name of the variable}
+\item{df_name}{Name of the dataframe}
 
-\item{df}{Name of the dataframe}
+\item{col_name}{Name of the variable}
 
 \item{pct}{Percent of missing values}
 }
@@ -20,6 +20,6 @@ dataframe
 Function for replacing values with missing NA value for a given dataframe and variable
 }
 \examples{
-addMissingValues(df=df, col_name=var, pc=10);
+addMissingValues(df_name = df, col_name = var1, pc=20);
 
 }

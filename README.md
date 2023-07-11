@@ -95,7 +95,7 @@ When you want to skew your dataset, you can add some missing values to your desi
 In addition, the parameter `pc` is for percent of values for given dataframe.column that you want to replace. 
 
 ```r
-my_dataset$ii_1 <- addMissingValues(my_dataset, ii_1, pc = 10)
+addMissingValues(my_dataset, ii_1, pc = 10)
 
 ```
 
