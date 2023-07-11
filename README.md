@@ -19,7 +19,8 @@ install_github("tomaztk/datasetR")
 Comes prepacked with a main function `dsR()` that will help you generate the dataset. But first, let's create a list with 20 different variable types and a random values.
 
 ```         
-library(datasetR)set_of_val <- set_of_val
+library(datasetR)
+set_of_val <- set_of_val
 ```
 And you will get a starting set of values:
 ![Set of Values](imgs/img1_set_of_vals.png)
@@ -95,7 +96,7 @@ When you want to skew your dataset, you can add some missing values to your desi
 In addition, the parameter `pc` is for percent of values for given dataframe.column that you want to replace. 
 
 ```r
-addMissingValues(my_dataset, ii_1, pc = 10)
+mydataset$ii_1 <- addMissingValues(my_dataset, ii_1, pc = 10)
 
 ```
 
