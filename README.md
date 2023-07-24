@@ -4,7 +4,7 @@ The `datasetR` helps you generate a random datasets for your R project. It provi
 
 ## Installing
 
-`datasetR`  package can be installed and downloaded from this Github repository using **devtools** package. More on
+`datasetR` package can be installed and downloaded from this Github repository using **devtools** package. More on
 [devtools package](https://www.rstudio.com/products/rpackages/devtools/).
  
 Installing is done using:
@@ -23,8 +23,7 @@ library(datasetR)
 set_of_val <- set_of_val
 ```
 And you will get a starting set of values:
-![Set of Values](imgs/img1_set_of_vals.png)
-
+![Set of Values](man/figures/img1_set_of_vals.png)
 
 ## Data Types
 

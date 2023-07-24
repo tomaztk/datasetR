@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>/404.html</loc>
+  </url>
+  <url>
+    <loc>/authors.html</loc>
+  </url>
+  <url>
+    <loc>/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/addMissingValues.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dsR.html</loc>
+  </url>
+  <url>
+    <loc>/reference/getType.html</loc>
+  </url>
+  <url>
+    <loc>/reference/getValues.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_uuid.html</loc>
+  </url>
+  <url>
+    <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/set_of_val.html</loc>
+  </url>
+</urlset>
