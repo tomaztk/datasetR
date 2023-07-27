@@ -103,3 +103,11 @@ my_dataset$ii_1 <- addMissingValues(my_dataset, ii_1, pc = 10)
 
 You are welcome to submit suggestions and report bugs: https://github.com/tomaztk/datasetR/issues
 
+Thanks goes to all the of these [contributors](https://github.com/tomaztk/datasetR/graphs/contributors)!
+
+
+## Documentation
+
+Documentation available [https://tomaztk.github.io/datasetR](https://tomaztk.github.io/datasetR) and created with [pkgdown](https://github.com/r-lib/pkgdown).
+
+
