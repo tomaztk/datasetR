@@ -5,7 +5,7 @@
 \alias{set_of_val}
 \title{Sample data}
 \format{
-An object of class \code{list} of length 20.
+An object of class \code{list} of length 21.
 }
 \usage{
 set_of_val

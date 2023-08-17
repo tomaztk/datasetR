@@ -56,7 +56,7 @@ get_uuid <- function(){
 #' @export
 #'
 getValues <- function(){
-  #ms = nominal ; mo = ordinal; li = likert; bo = boolean; bi = binary; le = letters; gu = GUID; te = temperature; mo = money
+  #ms = nominal ; mo = ordinal; li = likert; bo = boolean; bi = binary; le = letters; gu = GUID; te = temperature; mo = money; it = integer
   set_of_val <- list(
     ms = c("red", "green", "blue", "black", "magenta"),
     ms = c("Europe", "Australia", "Asia", "Africa", "America", "Antarctica"),
@@ -69,6 +69,7 @@ getValues <- function(){
     li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
     ii = 1:1000,
     ii = 9000:20120,
+    it = 1:110,
     bo = c(TRUE,FALSE),
     bi = c("Yes", "No"),
     bi = c("1", "0"),
@@ -102,6 +103,7 @@ set_of_val <- list(
   li = c("Strongly Agree", "Agree", "Somewhat Agree", "Neutral","Somewhat Disagree", "Disagree", "Strongly Disagree"),
   ii = 1:1000,
   ii = 9000:20120,
+  it = 1:110,
   bo = c(TRUE,FALSE),
   bi = c("Yes", "No"),
   bi = c("1", "0"),
